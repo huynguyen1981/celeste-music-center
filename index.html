@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celeste Music Center | Classical Piano Mastery in OKC</title>
+    
+    <!-- Favicon Configuration -->
+    <link rel="icon" type="image/jpeg" href="Celeste Music Center.jpeg">
+    
+    <!-- Google Fonts & FontAwesome CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --bg-primary: #FAF9F5;
+            --bg-secondary: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --bg-glass: rgba(250, 249, 245, 0.90);
+            --text-primary: #0C1829;
+            --text-secondary: #4A5568;
+            --text-muted: #718096;
+            --accent-gold: #C59B27;
+            --accent-gold-hover: #A37E1C;
+            --accent-gold-light: rgba(197, 155, 39, 0.12);
+            --accent-gold-glow: rgba(197, 155, 39, 0.25);
+            --accent-sapphire: #0F2342;
+            --border-color: #E2E8F0;
+            --border-highlight: rgba(197, 155, 39, 0.3);
+            --card-shadow: 0 12px 32px -8px rgba(12, 24, 41, 0.08);
+            --transition-speed: 0.3s;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme Variables */
+            --bg-primary: #070D18;
+            --bg-secondary: #0F192C;
+            --bg-card: #132038;
+            --bg-glass: rgba(7, 13, 24, 0.90);
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --text-muted: #94A3B8;
+            --accent-gold: #E5C158;
+            --accent-gold-hover: #F3D270;
+            --accent-gold-light: rgba(229, 193, 88, 0.15);
+            --accent-gold-glow: rgba(229, 193, 88, 0.35);
+            --accent-sapphire: #1E3A8A;
+            --border-color: #1E293B;
+            --border-highlight: rgba(229, 193, 88, 0.3);
+            --card-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            position: relative;
+        }
+
+        .bg-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(80vw, 480px);
+            height: auto;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.04;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity var(--transition-speed);
+        }
+
+        [data-theme="dark"] .bg-watermark {
+            opacity: 0.08;
+            filter: invert(1) brightness(1.2);
+        }
+
+        .bg-watermark img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+        }
+
+        header, section, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3, h4, .font-serif {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        .section-padding { padding: 4.5rem 0; }
+        .text-gold { color: var(--accent-gold); }
+        .text-center { text-align: center; }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            background: var(--accent-gold-light);
+            color: var(--accent-gold);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1.8rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            border: 2px solid transparent;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #B88B1E 100%);
+            color: #0C1829;
+            box-shadow: 0 4px 15px var(--accent-gold-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--accent-gold-glow);
+            filter: brightness(1.05);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: var(--accent-gold);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-gold-light);
+            transform: translateY(-2px);
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all var(--transition-speed);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 76px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+
+        /* Gold Framed Logo Container for Header & Footer */
+        .logo-img-wrapper {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1.5px solid var(--accent-gold);
+            border-radius: var(--radius-sm);
+            background: #070D18;
+            padding: 2px;
+            box-shadow: 0 2px 10px rgba(197, 155, 39, 0.2);
+            transition: all var(--transition-speed);
+            overflow: hidden;
+        }
+
+        .logo-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .logo-img-wrapper:hover {
+            box-shadow: 0 0 14px var(--accent-gold-glow);
+            transform: scale(1.03);
+        }
+        .contact-info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.8rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--card-shadow);
+            margin-top: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--accent-gold-light);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .info-text h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .info-text p, .info-text a {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .info-text a:hover {
+            color: var(--accent-gold);
+        }
+
+        .map-container {
+            margin-top: 1.2rem;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-highlight);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: 220px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .brand-name {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .brand-sub {
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color var(--transition-speed);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-gold);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .theme-toggle-btn:hover {
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        .hero-section {
+            padding-top: 9rem;
+            padding-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 80% 20%, var(--accent-gold-light) 0%, transparent 40%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.4rem, 4.8vw, 3.8rem);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 580px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-number { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--accent-gold); }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .hero-media { position: relative; }
+
+        .hero-image-card {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-highlight);
+            background: var(--bg-card);
+        }
+
+        .hero-image-card img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bio-section {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .bio-portrait {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 2px solid var(--border-highlight);
+        }
+
+        .bio-portrait img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bio-credentials {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.8rem 0;
+        }
+
+        .cred-card {
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .cred-card h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .cred-card p { font-size: 0.82rem; color: var(--text-muted); }
+
+        .section-header {
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .section-header h2 { font-size: clamp(2rem, 3.8vw, 2.7rem); margin-bottom: 0.75rem; }
+        .section-header p { color: var(--text-secondary); font-size: 1.05rem; }
+
+        .method-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.7rem 1.4rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--accent-gold);
+            color: #0C1829;
+            border-color: var(--accent-gold);
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+        }
+
+        .method-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            transition: all var(--transition-speed);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .method-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-highlight);
+        }
+
+        .method-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-sm);
+            background: var(--accent-gold-light);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .method-card h3 { font-size: 1.4rem; }
+        .method-card p { color: var(--text-secondary); font-size: 0.92rem; }
+
+        .method-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .method-list li i { color: var(--accent-gold); margin-top: 0.2rem; }
+
+        .assessment-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .assessment-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            padding: 2.2rem;
+            box-shadow: var(--card-shadow);
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .quiz-step { display: none; }
+        .quiz-step.active { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .option-card {
+            padding: 1.2rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            text-align: center;
+        }
+
+        .option-card:hover {
+            border-color: var(--accent-gold);
+            background: var(--accent-gold-light);
+        }
+
+        .option-card i {
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.8rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stars { color: var(--accent-gold); margin-bottom: 0.8rem; font-size: 0.85rem; }
+        .testimonial-text { color: var(--text-secondary); font-style: italic; margin-bottom: 1.2rem; font-size: 0.92rem; }
+        
+        .author-info { display: flex; align-items: center; gap: 0.8rem; }
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            color: #0C1829;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .contact-section {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 2.2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group { margin-bottom: 1.1rem; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 0.9rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.92rem;
+        }
+
+        .form-control:focus { outline: none; border-color: var(--accent-gold); }
+        textarea.form-control { resize: vertical; min-height: 100px; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .site-footer {
+            background: #060B14;
+            color: #94A3B8;
+            padding: 3.5rem 0 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-bottom {
+            padding-top: 1.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            font-size: 0.82rem;
+        }
+
+        /* Modal Popup */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .modal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            padding: 2.2rem;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        @media (min-width: 768px) {
+            .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+            .bio-grid { grid-template-columns: 0.9fr 1.1fr; }
+            .method-grid { grid-template-columns: repeat(3, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+            .contact-grid { grid-template-columns: 0.9fr 1.1fr; }
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+        }
+
+        @media (max-width: 767px) {
+            .nav-menu {
+                position: fixed;
+                top: 76px; left: 0; width: 100%;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 2rem; gap: 1.25rem;
+                border-bottom: 1px solid var(--border-color);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+            .nav-menu.active { transform: translateY(0); }
+            .mobile-toggle { display: block; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Subtle Centered Watermark Logo Image -->
+    <div class="bg-watermark" aria-hidden="true">
+        <img src="Celeste Music Center.jpeg" alt="Celeste Music Center Logo Background Watermark" onerror="this.onerror=null; this.style.display='none';">
+    </div>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <!-- Brand Logo -->
+                <div class="brand-logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <div class="logo-img-wrapper">
+                        <img src="Celeste Music Center.jpeg" alt="Celeste Music Center Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x100/070D18/C59B27?text=CELESTE';">
+                    </div>
+                    <div class="brand-title">
+                        <span class="brand-name">CELESTE</span>
+                        <span class="brand-sub">MUSIC CENTER</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav class="nav-menu" id="navMenu">
+                    <a href="#hero" class="nav-link active">Home</a>
+                    <a href="#bio" class="nav-link">Instructor</a>
+                    <a href="#method" class="nav-link">Celeste Method</a>
+                    <a href="#assessment" class="nav-link">Level Quiz</a>
+                    <a href="#testimonials" class="nav-link">Reviews</a>
+                    <a href="#booking" class="nav-link">Booking</a>
+                </nav>
+
+                <!-- Action Controls -->
+                <div class="nav-controls">
+                    <button class="theme-toggle-btn" id="themeToggle" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </button>
+                    <a href="#booking" class="btn btn-primary" style="padding: 0.55rem 1.1rem; font-size: 0.85rem;">Get Trial</a>
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="badge">
+                        <i class="fa-solid fa-award"></i> ABRSM Grade 8 Theory Distinction
+                    </div>
+                    <h1>Celeste: Classical Piano Mastery, <span class="text-gold">OKC</span></h1>
+                    <p class="hero-subtitle">
+                        Empowering young musicians and ambitious pianists in Oklahoma City through structured ABRSM pedagogy, scientific theory mastery, and artistic performance excellence.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#booking" class="btn btn-primary">
+                            <i class="fa-solid fa-calendar-check"></i> Book Free Trial Lesson
+                        </a>
+                        <a href="#method" class="btn btn-outline">
+                            <i class="fa-solid fa-music"></i> Explore Method
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">ABRSM Pass Rate</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Grade 8</span>
+                            <span class="stat-label">Distinction Instructor</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">OKC</span>
+                            <span class="stat-label">Studio & In-Home</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-media">
+                    <div class="hero-image-card">
+                        <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=1200&auto=format&fit=crop" alt="Steinway Grand Piano Studio - Celeste Music Center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bio-section section-padding" id="bio">
+        <div class="container">
+            <div class="bio-grid">
+                <div class="bio-portrait">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" alt="Celeste Music Center Primary Instructor">
+                </div>
+                <div class="bio-info">
+                    <div class="badge">
+                        <i class="fa-solid fa-user-graduate"></i> The Maestro Behind Celeste
+                    </div>
+                    <h2 style="font-size: clamp(2rem, 3.5vw, 2.7rem); margin-bottom: 1rem;">
+                        Dedicated to Elevating Classical Standards
+                    </h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">
+                        At Celeste Music Center, piano instruction is treated not merely as hobby practice, but as an intellectual and artistic discipline. Founded by an ABRSM Grade 8 certified pianist with high distinction in music theory, our OKC studio provides young learners with a solid foundation that lasts a lifetime.
+                    </p>
+
+                    <div class="bio-credentials">
+                        <div class="cred-card">
+                            <h4>ABRSM Grade 8 Distinction</h4>
+                            <p>Highest honors in Theory & Practical Exam.</p>
+                        </div>
+                        <div class="cred-card">
+                            <h4>Child Pedagogy Focused</h4>
+                            <p>Custom cognitive routes for ages 5–18.</p>
+                        </div>
+                        <div class="cred-card">
+                            <h4>Repertoire Mastery</h4>
+                            <p>Baroque, Classical, and Modern eras.</p>
+                        </div>
+                        <div class="cred-card">
+                            <h4>OKC Local Studio</h4>
+                            <p>Serving Nichols Hills, Edmond & Greater OKC.</p>
+                        </div>
+                    </div>
+
+                    <a href="#booking" class="btn btn-outline">
+                        <i class="fa-solid fa-handshake"></i> Schedule Instructor Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="method">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge"><i class="fa-solid fa-diagram-project"></i> Rigorous Pedagogy</div>
+                <h2>The Celeste Method</h2>
+                <p>Designed around standard ABRSM parameters, combining traditional European classical precision with modern cognitive learning techniques.</p>
+            </div>
+
+            <div class="method-tabs">
+                <button class="tab-btn active" data-tab="all">All Pillars</button>
+                <button class="tab-btn" data-tab="technique">🎹 Scales & Technicals</button>
+                <button class="tab-btn" data-tab="repertoire">🎼 Repertoire (Groups A, B, C)</button>
+                <button class="tab-btn" data-tab="theory">🧠 Scientific Theory</button>
+            </div>
+
+            <div class="method-grid">
+                <div class="method-card" data-category="technique">
+                    <div class="method-icon"><i class="fa-solid fa-keyboard"></i></div>
+                    <h3>Scales & Technicals</h3>
+                    <p>Building flawless finger dexterity, posture, and tone control through structured daily warm-up protocols.</p>
+                    <ul class="method-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Major/Minor Scales & Arpeggios</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Hanon & Czerny Velocity Studies</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Weight Balance & Wrist Mechanics</li>
+                    </ul>
+                </div>
+
+                <div class="method-card" data-category="repertoire">
+                    <div class="method-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                    <h3>Repertoire (A, B, C)</h3>
+                    <p>Curated selections across three classic categories to develop historical interpretation and style diversity.</p>
+                    <ul class="method-list">
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Group A:</strong> Baroque & Early Classical</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Group B:</strong> Romantic Expression</li>
+                        <li><i class="fa-solid fa-circle-check"></i> <strong>Group C:</strong> 20th/21st Century Works</li>
+                    </ul>
+                </div>
+
+                <div class="method-card" data-category="theory">
+                    <div class="method-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>Scientific Theory</h3>
+                    <p>Deep analytical comprehension of harmony, counterpoint, form, and rapid sight-reading mechanisms.</p>
+                    <ul class="method-list">
+                        <li><i class="fa-solid fa-circle-check"></i> Harmonic Analysis & Cadences</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Aural Training & Dictation Practice</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Sight-Reading Pattern Recognition</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="assessment-section section-padding" id="assessment">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge"><i class="fa-solid fa-sliders"></i> Interactive Assessment</div>
+                <h2>Find Your Child's Starting Point</h2>
+                <p>Answer 2 quick questions to get an estimated lesson roadmap for your Oklahoma City student.</p>
+            </div>
+
+            <div class="assessment-card">
+                <div class="quiz-step active" id="step1">
+                    <h3 style="font-size: 1.25rem; text-align: center; margin-bottom: 0.5rem;">What is the student's current piano experience?</h3>
+                    <div class="quiz-options">
+                        <div class="option-card" onclick="selectOption('exp', 'beginner')">
+                            <i class="fa-solid fa-seedling"></i>
+                            <h4>Complete Beginner</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Little to no prior lessons</p>
+                        </div>
+                        <div class="option-card" onclick="selectOption('exp', 'intermediate')">
+                            <i class="fa-solid fa-music"></i>
+                            <h4>1–3 Years Practice</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Can read basic sheet music</p>
+                        </div>
+                        <div class="option-card" onclick="selectOption('exp', 'advanced')">
+                            <i class="fa-solid fa-crown"></i>
+                            <h4>3+ Years / ABRSM</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Preparing for exams/competitions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="step2">
+                    <h3 style="font-size: 1.25rem; text-align: center; margin-bottom: 0.5rem;">What is your primary musical goal?</h3>
+                    <div class="quiz-options">
+                        <div class="option-card" onclick="selectOption('goal', 'abrsm')">
+                            <i class="fa-solid fa-certificate"></i>
+                            <h4>ABRSM Certification</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Formal graded progress</p>
+                        </div>
+                        <div class="option-card" onclick="selectOption('goal', 'classical')">
+                            <i class="fa-solid fa-compact-disc"></i>
+                            <h4>Classical Repertoire</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Play famous masterpieces</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="stepResult">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.8rem; color: var(--accent-gold); margin-bottom: 0.5rem;">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Custom Plan Recommended</h3>
+                        <p id="recommendationText" style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Based on your selection, we recommend our 45-minute Weekly Practical + Theory session.
+                        </p>
+                        <a href="#booking" class="btn btn-primary" onclick="autofillBooking()">
+                            Claim Free 30-Min Trial Lesson
+                        </a>
+                        <button class="btn btn-outline" style="margin-left: 0.5rem;" onclick="resetQuiz()">Restart Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="testimonials">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="badge"><i class="fa-solid fa-comments"></i> Parent Feedback</div>
+                <h2>Trusted by OKC Families</h2>
+                <p>Read how Celeste Music Center has transformed music education for students across Oklahoma City.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Finding an instructor in Oklahoma City with genuine ABRSM Grade 8 Distinction was a game changer for our daughter. Her technique and theory understanding improved dramatically."
+                        </p>
+                    </div>
+                    <div class="author-info">
+                        <div class="author-avatar">E.M.</div>
+                        <div>
+                            <h5 style="font-size: 0.9rem;">Eleanor M.</h5>
+                            <span style="font-size: 0.78rem; color: var(--text-muted);">Nichols Hills, OKC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "The structured approach to sight-reading and theory made music fun and logical for my 10-year-old son. He achieved a High Merit on his exam!"
+                        </p>
+                    </div>
+                    <div class="author-info">
+                        <div class="author-avatar">D.K.</div>
+                        <div>
+                            <h5 style="font-size: 0.9rem;">David K.</h5>
+                            <span style="font-size: 0.78rem; color: var(--text-muted);">Edmond, OK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Patience, deep musical knowledge, and incredible professionalism. The Celeste Method truly delivers high standards without burning out young students."
+                        </p>
+                    </div>
+                    <div class="author-info">
+                        <div class="author-avatar">S.T.</div>
+                        <div>
+                            <h5 style="font-size: 0.9rem;">Sarah T.</h5>
+                            <span style="font-size: 0.78rem; color: var(--text-muted);">NW Oklahoma City</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section section-padding" id="booking">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <div class="badge"><i class="fa-solid fa-calendar-alt"></i> Get In Touch</div>
+                    <h2 style="font-size: clamp(2rem, 3.5vw, 2.5rem); margin-bottom: 1rem;">
+                        Check Instructor Availability
+                    </h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        Studio space is strictly capped each term to preserve individual attention. Fill out the form to request a complimentary 30-minute trial lesson in Oklahoma City.
+                    </p>
+
+                    <!-- Restored Contact Information & Embedded Map -->
+                    <div class="contact-info-card">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="info-text">
+                                <h4>Studio Address</h4>
+                                <p>521 SW 153rd St, Oklahoma City, OK 73170</p>
+                                <a href="https://maps.google.com/?cid=7614179936148261478" target="_blank" rel="noopener" style="font-weight: 600; font-size: 0.8rem; color: var(--accent-gold);">
+                                    <i class="fa-solid fa-diamond-turn-right"></i> Open in Google Maps
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="info-text">
+                                <h4>Phone / WhatsApp</h4>
+                                <a href="tel:4055550199">(405) 555-0199</a>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="info-text">
+                                <h4>Email Enquiries</h4>
+                                <a href="mailto:info@celestemusic.com">info@celestemusic.com</a>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                            <div class="info-text">
+                                <h4>Lesson Hours</h4>
+                                <p>Mon – Sat: 9:00 AM – 7:30 PM (By Appointment)</p>
+                            </div>
+                        </div>
+
+                        <!-- Compact Interactive Google Map -->
+                        <div class="map-container">
+                            <iframe 
+                                title="Celeste Music Center Studio Location Map"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.43828345704!2d-97.52229562354716!3d35.32009224908027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b22b58d9da7dddd%3A0x69ab024f6e060a66!2s521%20SW%20153rd%20St%2C%20Oklahoma%20City%2C%20OK%2073170!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="parentName">Parent / Guardian Name *</label>
+                                <input type="text" id="parentName" class="form-control" required placeholder="e.g. Jane Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentAge">Student Age *</label>
+                                <input type="text" id="studentAge" class="form-control" required placeholder="e.g. 9 years old">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" class="form-control" required placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" class="form-control" required placeholder="(405) 555-0199">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experienceLevel">Current Level / Experience</label>
+                            <select id="experienceLevel" class="form-control">
+                                <option value="beginner">Beginner (No prior lessons)</option>
+                                <option value="intermediate">Intermediate (1-3 Years)</option>
+                                <option value="advanced">Advanced / ABRSM Prep</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Additional Notes or Questions</label>
+                            <textarea id="message" class="form-control" placeholder="Tell us about goals or preferred lesson times..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.95rem;">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Request for Free Trial
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="brand-logo" style="margin-bottom: 1rem;">
+                        <div class="logo-img-wrapper">
+                            <img src="Celeste Music Center.jpeg" alt="Celeste Music Center Logo" onerror="this.onerror=null; this.src='https://placehold.co/100x100/070D18/C59B27?text=CELESTE';">
+                        </div>
+                        <div class="brand-title">
+                            <span class="brand-name" style="color:#FFF;">CELESTE</span>
+                            <span class="brand-sub">MUSIC CENTER</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; max-width: 320px; color: #94A3B8;">
+                        Premier classical piano and music theory instruction in Oklahoma City. ABRSM examination pathway and competitive coaching.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 style="color: #FFF; font-size: 0.95rem; margin-bottom: 0.8rem;">Navigation</h5>
+                    <ul style="display:flex; flex-direction:column; gap:0.4rem; font-size:0.85rem;">
+                        <li><a href="#hero" style="color:#94A3B8;">Home</a></li>
+                        <li><a href="#bio" style="color:#94A3B8;">Instructor Credentials</a></li>
+                        <li><a href="#method" style="color:#94A3B8;">The Celeste Method</a></li>
+                        <li><a href="#booking" style="color:#94A3B8;">Book Trial</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 style="color: #FFF; font-size: 0.95rem; margin-bottom: 0.8rem;">OKC Service Area</h5>
+                    <p style="font-size:0.85rem; color:#94A3B8; line-height: 1.7;">
+                        • Nichols Hills<br>• Edmond<br>• The Village<br>• Northwest Oklahoma City
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="yearSpan">2026</span> Celeste Music Center. All Rights Reserved. ABRSM Grade 8 Pedagogy.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-card">
+            <div style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 0.5rem;">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Request Received!</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;" id="modalText">
+                Thank you for contacting Celeste Music Center. We will review your request and reach out within 24 hours to schedule your student's trial lesson.
+            </p>
+            <button class="btn btn-primary" onclick="closeModal()">Close Window</button>
+        </div>
+    </div>
+
+    <script>
+        // Theme Switcher Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlTag = document.documentElement;
+
+        const savedTheme = localStorage.getItem('celeste_theme') || 'light';
+        
+        function applyTheme(theme) {
+            htmlTag.setAttribute('data-theme', theme);
+            themeIcon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            localStorage.setItem('celeste_theme', theme);
+        }
+
+        applyTheme(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlTag.getAttribute('data-theme');
+            applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+        });
+
+        // Mobile Nav Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.className = navMenu.classList.contains('active') ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
+            });
+        });
+
+        // Method Filter Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const methodCards = document.querySelectorAll('.method-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const targetTab = btn.getAttribute('data-tab');
+                methodCards.forEach(card => {
+                    if (targetTab === 'all' || card.getAttribute('data-category') === targetTab) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Assessment Quiz Logic
+        let quizState = { exp: null, goal: null };
+
+        function selectOption(key, value) {
+            quizState[key] = value;
+            if (key === 'exp') {
+                document.getElementById('step1').classList.remove('active');
+                document.getElementById('step2').classList.add('active');
+            } else if (key === 'goal') {
+                document.getElementById('step2').classList.remove('active');
+                document.getElementById('stepResult').classList.add('active');
+
+                const recEl = document.getElementById('recommendationText');
+                if (quizState.exp === 'beginner') {
+                    recEl.textContent = "Recommended: 30-Minute Weekly Foundations + ABRSM Sight-Reading & Rhythm Basics.";
+                } else if (quizState.exp === 'intermediate') {
+                    recEl.textContent = "Recommended: 45-Minute Weekly Lesson + Repertoire Groups A & B Focus with Scale Velocity.";
+                } else {
+                    recEl.textContent = "Recommended: 60-Minute Intensive Masterclass + Grade 8 Theory & Practical Distinction Track.";
+                }
+            }
+        }
+
+        function resetQuiz() {
+            quizState = { exp: null, goal: null };
+            document.getElementById('stepResult').classList.remove('active');
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+        }
+
+        function autofillBooking() {
+            if (quizState.exp) {
+                document.getElementById('experienceLevel').value = quizState.exp;
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const parentName = document.getElementById('parentName').value;
+            document.getElementById('modalText').textContent = `Thank you ${parentName}! Your request for a trial lesson at Celeste Music Center in OKC has been submitted successfully. We will call/email you within 24 hours.`;
+            document.getElementById('successModal').classList.add('active');
+            document.getElementById('bookingForm').reset();
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        document.getElementById('yearSpan').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
