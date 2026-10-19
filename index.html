@@ -1344,18 +1344,17 @@
         async function handleFormSubmit(event) {
     event.preventDefault();
 
-    // Lấy dữ liệu từ các input trên form
+    // Lấy đúng ID từ HTML gốc của bồ
     const formData = {
         parentName: document.getElementById('parentName').value,
         studentAge: document.getElementById('studentAge').value,
-        email: document.getElementById('email').value,         // ID input email tương ứng
-        phone: document.getElementById('phone').value,         // ID input phone tương ứng
-        level: document.getElementById('level').value,         // ID select level tương ứng
-        notes: document.getElementById('notes').value          // ID textarea notes tương ứng
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        level: document.getElementById('experienceLevel').value, // Đã khớp ID gốc
+        notes: document.getElementById('message').value          // Đã khớp ID gốc
     };
 
     try {
-        // Gửi dữ liệu ngầm lên Cloudflare Worker của ông
         const response = await fetch('https://celeste-mail.nguyenhuy-1981-hcm.workers.dev', {
             method: 'POST',
             headers: {
@@ -1367,12 +1366,12 @@
         const result = await response.json();
 
         if (result.success) {
-            // Hiển thị modal thông báo thành công như cũ
+            // Hiển thị thông báo thành công
             document.getElementById('modalText').textContent = `Thank you ${formData.parentName}! Your request for a trial lesson at Celeste Music Center in OKC has been submitted successfully. We will call/email you within 24 hours.`;
             document.getElementById('successModal').classList.add('active');
             document.getElementById('bookingForm').reset();
         } else {
-            alert('Something went wrong. Please try again or call us directly.');
+            alert('Something went wrong. Please try again.');
         }
     } catch (error) {
         console.error('Error submitting form:', error);
