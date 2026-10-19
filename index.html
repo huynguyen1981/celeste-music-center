@@ -1344,38 +1344,59 @@
         async function handleFormSubmit(event) {
     event.preventDefault();
 
-    // Lấy đúng ID từ HTML gốc của bồ
+    const form = event.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    // Đổi text button để tạo hiệu ứng đang gửi
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+
+    // Gom dữ liệu từ form gốc
     const formData = {
         parentName: document.getElementById('parentName').value,
         studentAge: document.getElementById('studentAge').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
-        level: document.getElementById('experienceLevel').value, // Đã khớp ID gốc
-        notes: document.getElementById('message').value          // Đã khớp ID gốc
+        level: document.getElementById('experienceLevel').value,
+        notes: document.getElementById('message').value,
+        _subject: `🎹 New Trial Lesson Request from ${document.getElementById('parentName').value}`
     };
 
     try {
-        const response = await fetch('https://celeste-mail.nguyenhuy-1981-hcm.workers.dev', {
+        // Gọi thẳng sang Formspree
+        const response = await fetch('https://formspree.io/f/mwlvzaar', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(formData)
         });
 
-        const result = await response.json();
+        if (response.ok) {
+            // Hiển thị modal thông báo thành công
+            const modalText = document.getElementById('modalText');
+            if (modalText) {
+                modalText.textContent = `Thank you ${formData.parentName}! Your request for a trial lesson at Celeste Music Center in OKC has been submitted successfully. We will call/email you within 24 hours.`;
+            }
+            
+            const successModal = document.getElementById('successModal');
+            if (successModal) {
+                successModal.classList.add('active');
+            }
 
-        if (result.success) {
-            // Hiển thị thông báo thành công
-            document.getElementById('modalText').textContent = `Thank you ${formData.parentName}! Your request for a trial lesson at Celeste Music Center in OKC has been submitted successfully. We will call/email you within 24 hours.`;
-            document.getElementById('successModal').classList.add('active');
-            document.getElementById('bookingForm').reset();
+            form.reset();
         } else {
-            alert('Something went wrong. Please try again.');
+            alert('Something went wrong. Please try again or call us directly.');
         }
     } catch (error) {
         console.error('Error submitting form:', error);
         alert('Network error. Please check your connection.');
+    } finally {
+        // Khôi phục lại nút Submit
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
     }
 }
 
